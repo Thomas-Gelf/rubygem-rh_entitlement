@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name        = 'rh_entitlement'
-  s.version     = '0.2.0'
+  s.version     = '0.2.1'
   s.date        = '2018-06-12'
   s.summary     = 'RH Entitlement Certificates'
   s.description = 'Helper library allowing one to deal with RH entitlement certs'
