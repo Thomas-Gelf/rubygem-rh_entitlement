@@ -1,9 +1,9 @@
-# RH Subscription
+# RH Entitlement
 
 This Ruby Gem helps to extract information (especially repository URLs) from
-your RedHat certificates. This is helpful when dealing with multiple RH subscriptions
-and the requirement to figure out which certificate / which ID to use for what
-repository.
+your RedHat entitlement certificates. This is helpful when dealing with multiple
+RH subscriptions and the requirement to figure out which certificate / which ID
+to use for what repository.
 
 ## Installation
 
@@ -21,7 +21,7 @@ gem "rh_entitlement"
 ```ruby
 require 'rh_entitlement'
 
-cert = RhSubscription::Certificate.new(
+cert = RhEntitlement::Certificate.new(
   File.read('/etc/pki/entitlement/9999999999.pem')
 )
 puts "Type: #{cert.type}"
