@@ -10,5 +10,5 @@ Gem::Specification.new do |s|
   s.email       = 'thomas@gelf.net'
   s.homepage    =
       'https://github.com/Thomas-Gelf/rubygem-rh_entitlement'
-  s.license     = 'GPLv2'
+  s.license     = 'GPL-2.0'
 end
