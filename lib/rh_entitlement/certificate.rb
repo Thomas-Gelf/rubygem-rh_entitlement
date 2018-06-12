@@ -1,6 +1,6 @@
 require 'openssl'
 
-module RhSubscription
+module RhEntitlement
   class Certificate
     OID_URLS = '1.3.6.1.4.1.2312.9.7'
     OID_TYPE = '1.3.6.1.4.1.2312.9.8'
@@ -10,7 +10,7 @@ module RhSubscription
     end
 
     def urls
-      @urls ||= RhSubscription::CertificateUrls.new(extension OID_URLS)
+      @urls ||= RhEntitlement::CertificateUrls.new(extension OID_URLS)
     end
 
     def type

@@ -1,7 +1,7 @@
 require 'stringio'
 require 'zlib'
 
-module RhSubscription
+module RhEntitlement
   class CertificateUrls
     def initialize(raw_der_body)
       @sentinal = '*'

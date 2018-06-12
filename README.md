@@ -10,7 +10,7 @@ repository.
 Add to your Gemfile and run the `bundle` command to install it.
 
 ```ruby
-gem "rh_subscription"
+gem "rh_entitlement"
 ```
 
 **Requires Ruby 1.9.3 or later.**
@@ -19,7 +19,7 @@ gem "rh_subscription"
 ## Usage
 
 ```ruby
-require 'rh_subscription'
+require 'rh_entitlement'
 
 cert = RhSubscription::Certificate.new(
   File.read('/etc/pki/entitlement/9999999999.pem')
@@ -43,7 +43,7 @@ The Huffman Coding has been forked and refactored from the rspec helper in
 
 ## Development
 
-Questions or problems? Please post them on the [issue tracker](https://github.com/Thomas-Gelf/rubygem-rh-subscription).
+Questions or problems? Please post them on the [issue tracker](https://github.com/Thomas-Gelf/rubygem-rh-entitlement).
 You can contribute changes by forking the project and submitting a pull request.
 
 This gem has been created by Thomas Gelf and is under the GPLv2 License.

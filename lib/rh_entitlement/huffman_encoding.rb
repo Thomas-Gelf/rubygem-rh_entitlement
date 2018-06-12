@@ -1,4 +1,4 @@
-module RhSubscription
+module RhEntitlement
   class HuffmanEncoding
     attr_accessor :root, :lookup, :input, :output
 
