@@ -125,7 +125,7 @@ The Huffman Coding has been forked and refactored from the rspec helper in
 
 ## Development
 
-Questions or problems? Please post them on the [issue tracker](https://github.com/Thomas-Gelf/rubygem-rh-entitlement).
+Questions or problems? Please post them on the [issue tracker](https://github.com/Thomas-Gelf/rubygem-rh_entitlement/issues).
 You can contribute changes by forking the project and submitting a pull request.
 
 This gem has been created by Thomas Gelf and is under the GPLv2 License.
