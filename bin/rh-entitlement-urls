@@ -1,8 +1,0 @@
-#!/usr/bin/env ruby
-
-require 'rh_entitlement'
-
-raise "USAGE: #{File.basename($0)} /path/to/certificate.pem" unless ARGV.length > 0
-cert = RhEntitlement::Certificate.new(File.read(ARGV[0]))
-puts "Type: #{cert.type}"
-puts "URLs:\n#{cert.urls.list.join("\n")}"

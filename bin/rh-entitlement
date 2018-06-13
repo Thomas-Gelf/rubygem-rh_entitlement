@@ -1,0 +1,75 @@
+#!/usr/bin/env ruby
+
+require 'rh_entitlement'
+
+def help_generic
+  <<-END
+usage: #{File.basename($0)} <command> [<args>]
+
+commands:
+
+  urls  List all repository URLs in the given certificate
+  find  Find the best certificate for a given repository URL
+
+urls
+----
+usage: #{File.basename($0)} urls <cert-file>
+
+cert-file:
+  Absolute paths to an entitlement certificate file, like
+  /etc/pki/entitlement/9999999999.pem
+
+find
+----
+usage: #{File.basename($0)} find <repo-url> [<cert-file>[ ...]]
+
+repo-url:
+  Relative repository URL, like
+  /content/beta/rhel/server/5/$releasever/$basearch/highavailability/os
+
+cert-file:
+  One or more absolute paths to entitlement certificate files. All <numeric>.pem
+  files in /etc/pki/entitlement will be used if no <cert-file> has been given
+  END
+end
+
+def usage_error(msg)
+  puts "ERROR: #{msg}"
+  puts
+  puts help_generic
+  exit 64
+end
+
+opts = ARGV.clone
+usage_error '<command> is required' unless opts.length > 0
+command = opts.shift
+
+case command
+when 'urls'
+  cert = RhEntitlement::Certificate.new(File.read(opts[0]))
+  puts "Type: #{cert.type}"
+  puts cert.urls.list.join("\n")
+when 'find'
+  usage_error '<repo_url> is required' unless opts.length > 0
+  repo_url = opts.shift
+  usage_error 'Invalid <repo_url>' unless repo_url.match(/^\/content\//)
+
+  if opts.length == 0
+    cert_files = Dir.glob('/etc/pki/entitlement/*.pem').grep(/\/\d+\.pem$/)
+  else
+    cert_files = opts
+  end
+
+  cert_files.each do |file|
+    cert = RhEntitlement::Certificate.new(File.read(file))
+    if cert.urls.has? repo_url
+      puts file
+      exit 0
+    end
+  end
+
+  puts "ERROR: no certificate has been found for #{repo_url}"
+  exit 1
+else
+  usage_error 'Invalid <command>'
+end
