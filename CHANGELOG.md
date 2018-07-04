@@ -1,3 +1,6 @@
+## v0.5.0 (2018-07-04)
+* FEATURE: search also for URL variants (6Server VS $releasever)
+
 ## v0.4.0 (2018-06-22)
 * FEATURE: implemented RhEntitlement::Lookup for easier lookups
 

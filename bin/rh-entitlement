@@ -60,11 +60,14 @@ when 'find'
     cert_files = opts
   end
 
+  urls = RhEntitlement::Lookup.make_url_variants(repo_url)
   cert_files.each do |file|
     cert = RhEntitlement::Certificate.new(File.read(file))
-    if cert.urls.has? repo_url
-      puts file
-      exit 0
+    urls.each do |url|
+      if cert.urls.has? url
+        puts file
+        exit 0
+      end
     end
   end
 

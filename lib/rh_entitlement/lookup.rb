@@ -34,11 +34,24 @@ module RhEntitlement
     end
 
     def find_url(url)
+      urls = self.make_url_variants(url)
       entitlements.each do |key, entitlement|
-        return key if entitlement.urls.has?(url)
+        urls.each do |search|
+          return key if entitlement.urls.has?(search)
+        end
       end
 
       nil
+    end
+
+    def self.make_url_variants(url)
+      urls = [url]
+      if url.match(/\dServer/)
+        urls.push(url.gsub(/\dServer/, '$releasever'))
+      else
+        urls.push(url.gsub('$releasever', '6Server'))
+        urls.push(url.gsub('$releasever', '7Server'))
+      end
     end
 
     def self.instance
