@@ -1,3 +1,6 @@
+## v0.5.1 (2018-07-04)
+* FIX: erroneous static method call
+
 ## v0.5.0 (2018-07-04)
 * FEATURE: search also for URL variants (6Server VS $releasever)
 

@@ -34,7 +34,7 @@ module RhEntitlement
     end
 
     def find_url(url)
-      urls = self.make_url_variants(url)
+      urls = self.class.make_url_variants(url)
       entitlements.each do |key, entitlement|
         urls.each do |search|
           return key if entitlement.urls.has?(search)
